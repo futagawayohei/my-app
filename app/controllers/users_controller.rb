@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @jobs = @user.jobs.order('created_at DESC').page(params[:page])
     counts(@user)
+    
+    @user = User.find(params[:id])
+    @foods = @user.foods.order('created_at DESC').page(params[:page])
+    counts(@user)
   end
 
   def new
