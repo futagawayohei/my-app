@@ -5,6 +5,9 @@
     <thead>
       <tr>
         <th>id</th>
+        <th>日時</th>
+        <th>内容</th>
+        <th>ポイント</th>
       </tr>
     </thead>
     <tbody>
@@ -13,7 +16,9 @@
       <thead>
        <tr>
         <td><%= link_to food.id, food %></td>
+        <td><%= food.ate_at %></td>
         <td><%= food.content %></td>
+        <td><%= food.fat %></td>
        </tr>
     　</thead>
     

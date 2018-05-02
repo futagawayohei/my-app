@@ -9,7 +9,9 @@
           <%= link_to food.user.name, user_path(job.user) %> <span class="text-muted">posted at <%= food.created_at %></span>
         </div>
         <div>
+          <p><%= food.ate_at %></p>
           <p><%= food.content %></p>
+          <p><%= food.fat %></p>
         </div>
         <div>
           <% if current_user == food.user %>
