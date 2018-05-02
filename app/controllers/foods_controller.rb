@@ -1,16 +1,42 @@
 class FoodsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
+  def index
+    @foods = current_user.foods.all
+  end
+  
+  def show
+    @food = Food.find(params[:id])
+  end
+  
+  def new
+    @food = Food.new
+  end
+
   def create
     @food = current_user.foods.build(job_params)
     if @food.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = 'メニューを投稿しました。'
       redirect_to root_url
     else
       @foods = current_user.foods.order('created_at DESC').page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = 'メニューの投稿に失敗しました。'
       render 'toppages/index'
+    end
+  end
+  
+  def edit
+    @food = Food.find(params[:id])
+  end
+
+  def update
+    if @food.update(food_params)
+      flash[:success] = 'メニュー は正常に更新されました'
+      redirect_to @food
+    else
+      flash.now[:danger] = 'メニュー は更新されませんでした'
+      render :edit
     end
   end
 
@@ -22,7 +48,7 @@ class FoodsController < ApplicationController
   
   private
 
-  def job_params
+  def food_params
     params.require(:food).permit(:content)
   end
 

@@ -1,0 +1,25 @@
+<h1>一覧</h1>
+
+<% if @foods.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+      </tr>
+    </thead>
+    <tbody>
+
+     <% @foods.each do |food| %>
+      <thead>
+       <tr>
+        <td><%= link_to food.id, food %></td>
+        <td><%= food.content %></td>
+       </tr>
+    　</thead>
+    
+   　<% end %>
+  　</tbody>
+  </table>
+<% end %>
+ 
+<%= link_to '新規投稿', new_food_path, class: "btn btn-primary " %>

@@ -9,11 +9,14 @@
           <%= link_to job.user.name, user_path(job.user) %> <span class="text-muted">posted at <%= job.created_at %></span>
         </div>
         <div>
+          <p><%= job.burn_at %></p>
           <p><%= job.content %></p>
+          <p><%= job.calorie %></p>
         </div>
         <div>
           <% if current_user == job.user %>
             <%= link_to "Delete", job, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+            <%= link_to 'edit', edit_job_path(job), class: "btn btn-default" %>
           <% end %>
         </div>
       </div>

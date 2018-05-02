@@ -1,0 +1,22 @@
+<h1>id: <%= @job.id %> 詳細ページ</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>id</th>
+    <td><%= @job.id %></td>
+  </tr>
+  <tr>
+  <tr>
+    <th>日時</th>
+    <td><%= @job.burn_at %></td>
+    <th>運動</th>
+    <td><%= @job.content %></td>
+    <th>ポイント</th>
+    <td><%= @job.calorie %></td>
+  </tr>
+  </tr>
+  
+</table>
+
+<%= link_to '編集', edit_job_path(@job), class: "btn btn-default" %>
+<%= link_to '削除', @job, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %>

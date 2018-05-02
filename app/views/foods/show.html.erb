@@ -1,0 +1,15 @@
+<h1>id: <%= @food.id %> 詳細ページ</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>id</th>
+    <td><%= @food.id %></td>
+  </tr>
+  <tr>
+    <th>食事</th>
+    <td><%= @food.content %></td>
+  </tr>
+</table>
+
+<%= link_to '編集', edit_food_path(@food), class: "btn btn-default" %>
+<%= link_to '削除', @food, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %>

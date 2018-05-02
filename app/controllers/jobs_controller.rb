@@ -1,6 +1,19 @@
 class JobsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
+  
+  def index
+    @jobs = current_user.jobs.all
+  end
+  
+  def show
+    @job = Job.find(params[:id])
+  end
+  
+  def new
+    @job = Job.new
+  end
+  
   
   def create
     @job = current_user.jobs.build(job_params)
@@ -13,6 +26,21 @@ class JobsController < ApplicationController
       render 'toppages/index'
     end
   end
+  
+  def edit
+    @job = Job.find(params[:id])
+  end
+
+  def update
+    if @job.update(job_params)
+      flash[:success] = 'メニュー は正常に更新されました'
+      redirect_to @job
+    else
+      flash.now[:danger] = 'メニュー は更新されませんでした'
+      render :edit
+    end
+  end
+  
 
   def destroy
     @job.destroy
@@ -23,7 +51,7 @@ class JobsController < ApplicationController
     private
 
   def job_params
-    params.require(:job).permit(:content)
+    params.require(:job).permit(:burn_at,:content,:calorie)
   end
 
   def correct_user

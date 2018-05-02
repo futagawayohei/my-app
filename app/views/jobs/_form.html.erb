@@ -1,0 +1,36 @@
+<div class="row">
+ <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
+   <%= form_for(job) do |f| %>
+
+    <% if job.errors.any? %>
+     <div class="alert alert-warning">
+      <ul>
+       <% job.errors.full_messages.each do |job| %>
+       <li><%= job %></li>
+       <% end %>
+      </ul>
+     </div>
+    <% end %>
+    
+    
+     <div class="form-group">
+      <%= f.label :burn_at, "日時" %>
+      <%= f.text_field :burn_at, class: "form-control" %>
+     </div>
+ 
+     <div class="form-group">
+      <%= f.label :content, "内容" %>
+      <%= f.text_field :content, class: "form-control" %>
+     </div>
+     
+     <div class="form-group">
+      <%= f.label :calorie, "ポイント" %>
+      <%= f.text_field :calorie, class: "form-control" %>
+     </div>
+  
+
+  <%= f.submit "投稿", class: "btn btn-primary btn-block" %>
+
+   <% end %>
+ </div>
+</div>
