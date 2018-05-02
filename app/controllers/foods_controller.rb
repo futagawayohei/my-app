@@ -15,7 +15,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = current_user.foods.build(job_params)
+    @food = current_user.foods.build(food_params)
     if @food.save
       flash[:success] = 'メニューを投稿しました。'
       redirect_to root_url
