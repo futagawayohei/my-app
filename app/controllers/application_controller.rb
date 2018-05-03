@@ -12,8 +12,6 @@ class ApplicationController < ActionController::Base
   end
     def counts(user)
     @count_jobs = user.jobs.count
-    end
-    def counts(user)
     @count_foods = user.foods.count
     end
 end

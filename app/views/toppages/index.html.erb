@@ -2,23 +2,13 @@
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
   <div class="row">
     <aside class="col-md-4">
-      <%= form_for(@job) do |f| %>
-        <div class="form-group">
-          <%= f.label :burn_at, "日時"  %>
-          <%= f.text_field :burn_at, class: "form-control" %>
-          <%= f.label :content, "内容"  %>
-          <%= f.text_area :content, class: 'form-control'%>
-          <%= f.label :calorie, "ポイント"  %>
-          <%= f.text_area :calorie, class: 'form-control'%>
-        </div>
-        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-      <% end %>
-    </aside>
-    <div class="col-xs-8">
-      <%= render 'jobs/jobs', jobs: @jobs %>
-      <%= render 'foods/foods', foods: @foods %>
-    </div>
+      <p>jobs</p>
+      <%= link_to '新規投稿', new_job_path, class: "btn btn-primary " %>
+      <P>foods</P>
+      <%= link_to '新規投稿', new_food_path, class: "btn btn-primary " %>
   </div>
+    </aside>
+</div>
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">

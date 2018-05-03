@@ -18,11 +18,11 @@ class JobsController < ApplicationController
   def create
     @job = current_user.jobs.build(job_params)
     if @job.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = 'メニューを投稿しました。'
       redirect_to root_url
     else
       @jobs = current_user.jobs.order('created_at DESC').page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = 'メニューの投稿に失敗しました。'
       render 'toppages/index'
     end
   end
@@ -44,7 +44,7 @@ class JobsController < ApplicationController
 
   def destroy
     @job.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = 'メニューを削除しました。'
     redirect_back(fallback_location: root_path)
   end
   
