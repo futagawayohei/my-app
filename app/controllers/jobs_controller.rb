@@ -49,6 +49,10 @@ class JobsController < ApplicationController
   end
   
     private
+    
+  def set_jobs
+    @job = Job.find(params[:id])
+  end
 
   def job_params
     params.require(:job).permit(:burn_at,:content,:calorie)
